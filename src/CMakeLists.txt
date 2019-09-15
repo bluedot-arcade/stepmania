@@ -345,6 +345,7 @@ list(APPEND SMDATA_LINK_LIB
   "png"
   "glew"
   "jpeg"
+  "bluedotio"
 )
 include(../extern/CMakeProject-mmmagic.cmake)
 
