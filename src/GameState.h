@@ -244,6 +244,10 @@ public:
 
 	int prepare_song_for_gameplay();
 
+	void SetActiveColorIndex(int cIdx);
+
+	int GetActiveColorIndex();
+
 	// State Info used during gameplay
 
 	// NULL on ScreenSelectMusic if the currently selected wheel item isn't a Song.
@@ -432,6 +436,8 @@ private:
 	float m_LastPositionSeconds;
 	bool m_paused;
 
+	int activeColorIndex = 3;
+	
 	GameState(const GameState& rhs);
 	GameState& operator=(const GameState& rhs);
 

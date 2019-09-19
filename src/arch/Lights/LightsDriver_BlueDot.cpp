@@ -1,5 +1,6 @@
 #include "global.h"
 #include "LightsDriver_BlueDot.h"
+#include "GameState.h"
 
 REGISTER_LIGHTS_DRIVER_CLASS( BlueDot );
 
@@ -42,6 +43,18 @@ void LightsDriver_BlueDot::Set(const LightsState *ls)
 	for(int i = 0; i < 8; i++) {
 		buf[i] = 0x00;
 	}
+
+	/* Hacky stuff. Send ActiveColorIndex through light control lines */
+	int activeColorIndex = GAMESTATE->GetActiveColorIndex();
+
+	if (activeColorIndex & 0x01)
+		buf[LIGHT_P1_BTN_MENULEFT_BYTE] |= LIGHT_P1_BTN_MENULEFT_MASK;
+	if (activeColorIndex & 0x02)
+		buf[LIGHT_P1_BTN_MENURIGHT_BYTE] |= LIGHT_P1_BTN_MENURIGHT_MASK;
+	if (activeColorIndex & 0x04)
+		buf[LIGHT_P1_BTN_MENUUP_BYTE] |= LIGHT_P1_BTN_MENUUP_MASK;
+	if (activeColorIndex & 0x08)
+		buf[LIGHT_P1_BTN_MENUDOWN_BYTE] |= LIGHT_P1_BTN_MENUDOWN_MASK;
 
 	//Update cabinet lights
 	if (ls->m_bCabinetLights[LIGHT_MARQUEE_UP_LEFT])

@@ -905,6 +905,7 @@
 			<Function name='HaveProfileToLoad'/>
 			<Function name='HaveProfileToSave'/>
 			<Function name='InsertCoin'/>
+			<Function name='SetActiveColorIndex'/>
 			<Function name='InsertCredit'/>
 			<Function name='InStepEditor'/>
 			<Function name='IsAnExtraStage'/>

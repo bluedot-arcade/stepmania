@@ -1478,6 +1478,16 @@ int GameState::prepare_song_for_gameplay()
 	return 0;
 }
 
+void GameState::SetActiveColorIndex(int cIdx)
+{
+	activeColorIndex = cIdx;
+}
+
+int GameState::GetActiveColorIndex()
+{
+	return activeColorIndex;
+}
+
 static LocalizedString PLAYER1	("GameState","Player 1");
 static LocalizedString PLAYER2	("GameState","Player 2");
 static LocalizedString CPU		("GameState","CPU");
@@ -3292,8 +3302,15 @@ public:
 		return 1;
 	}
 
+	static int SetActiveColorIndex(T* p, lua_State *L)
+	{
+		GAMESTATE->SetActiveColorIndex(IArg(1));
+		COMMON_RETURN_SELF;
+	}
+
 	LunaGameState()
 	{
+		ADD_METHOD( SetActiveColorIndex );
 		ADD_METHOD( IsPlayerEnabled );
 		ADD_METHOD( IsHumanPlayer );
 		ADD_METHOD( GetPlayerDisplayName );

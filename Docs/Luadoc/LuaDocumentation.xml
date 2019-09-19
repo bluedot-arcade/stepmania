@@ -2854,6 +2854,9 @@ save yourself some time, copy this for undocumented things:
 	<Function name='InsertCoin' return='void' arguments='int iCoins'>
 		Inserts <code>iCoins</code> number of coins.  <code>iCoins</code> can be negative or positive.
 	</Function>
+	<Function name='SetActiveColorIndex' return='void' arguments='int cIdx'>
+		Sets the active color index.
+	</Function>
 	<Function name='InsertCredit' return='void' arguments=''>
 		Inserts one credit.  To deduct a credit, pass a negative integer representing the number
 		of coins per credit to <Link class='GameState' function='InsertCoin'>InsertCoin</Link>.
